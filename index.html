@@ -12,14 +12,14 @@
         
         .page-wrapper { width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: flex-start; }
 
-        /* Ukuran Kertas A4 Presisi Geometris (794px murni) */
+        /* Ukuran Kertas A4 Presisi Geometris (794px murni) - BAYANGAN HITAM TELAH DIHAPUS */
         .tsr-paper {
             width: 794px;
             min-width: 794px;
             background-color: #ffffff;
             border: 2px solid #1e3a8a;
             padding: 15px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            box-shadow: none; /* Menghilangkan bayangan penyebab blok hitam di PDF */
             position: relative;
             border-radius: 4px;
         }
@@ -110,7 +110,7 @@
 
         @media print {
             body { background: #ffffff; padding: 0; }
-            .tsr-paper { box-shadow: none; border: 2px solid #1e3a8a; margin: 0; transform: none !important; }
+            .tsr-paper { box-shadow: none !important; border: 2px solid #1e3a8a; margin: 0; transform: none !important; }
             .panel-action, .modal-backdrop { display: none !important; }
         }
     </style>
@@ -120,13 +120,12 @@
     <div class="page-wrapper">
         <div class="tsr-paper" id="tsr-form">
             
-            <!-- BLOCK 1: HEADER & LOGO KOBEXINDO -->
             <table class="tsr-table">
                 <tr>
                     <td style="width: 22%; vertical-align: middle;">
                         <div style="display: flex; flex-direction: column; gap: 4px; font-weight: bold; font-size: 8.5px; color: #1e3a8a;">
                             <label><input type="checkbox"> CLAIMABLE</label>
-                            <label><input type="checkbox" > INFORMATION ONLY</label>
+                            <label><input type="checkbox"> INFORMATION ONLY</label>
                         </div>
                     </td>
                     <td style="width: 48%; text-align: center; vertical-align: middle; background-color: #f8fafc;">
@@ -141,28 +140,27 @@
                 </tr>
             </table>
 
-            <!-- BLOCK 2: INFORMASI DATA LAPORAN -->
             <table class="tsr-table">
                 <tr>
                     <td style="width: 25%; background-color: #f8fafc;">
                         <span class="label-text">Report No. <span class="sub-label-hint">(No/Mechanic/Product/Year)</span></span>
-                        <input type="text" id="repNo" value="       " style="color:#1e3a8a; font-weight:bold;">
+                        <input type="text" id="repNo" placeholder="Masukkan nomor...">
                     </td>
                     <td style="width: 15%;">
                         <span class="label-text">Date <span class="sub-label-hint">(Day-Month-Year)</span></span>
-                        <input type="text" value="       ">
+                        <input type="text" placeholder="DD-MM-YYYY">
                     </td>
                     <td style="width: 25%;">
                         <span class="label-text">Concept Claim No. <span class="sub-label-hint">(No/Branch/Product/Year)</span></span>
-                        <input type="text" placeholder="       ">
+                        <input type="text" placeholder="Masukkan claim no...">
                     </td>
                     <td style="width: 15%;">
                         <span class="label-text">Date <span class="sub-label-hint">(Day-Month-Year)</span></span>
-                        <input type="text" placeholder="        ">
+                        <input type="text" placeholder="DD-MM-YYYY">
                     </td>
                     <td style="width: 20%; font-weight: bold; font-size: 8px; background-color: #f0fdf4; color: #166534;" rowspan="3">
                         <div style="display: flex; flex-direction: column; gap: 5px; margin-top: 5px; padding-left: 5px;">
-                            <label><input type="checkbox" > Parts</label>
+                            <label><input type="checkbox"> Parts</label>
                             <label><input type="checkbox"> Technical</label>
                             <label><input type="checkbox"> Modification</label>
                         </div>
@@ -171,37 +169,36 @@
                 <tr>
                     <td>
                         <span class="label-text">Branch</span>
-                        <input type="text" value="     ">
+                        <input type="text" placeholder="...">
                     </td>
                     <td>
                         <span class="label-text">Machine Make</span>
-                        <input type="text" value="      ">
+                        <input type="text" placeholder="...">
                     </td>
                     <td colspan="2">
                         <span class="label-text">Customer Business</span>
-                        <input type="text" value="        ">
+                        <input type="text" placeholder="...">
                     </td>
                 </tr>
                 <tr>
                     <td colspan="2" style="background-color: #f8fafc;">
                         <span class="label-text">Customer Name</span>
-                        <input type="text" value="        " style="font-weight: bold;">
+                        <input type="text" placeholder="..." style="font-weight: bold;">
                     </td>
                     <td colspan="2">
                         <span class="label-text">Machine Location</span>
-                        <input type="text" value="         ">
+                        <input type="text" placeholder="...">
                     </td>
                 </tr>
                 <tr>
                     <td colspan="4"></td>
                     <td style="background-color: #f8fafc;">
                         <span class="label-text">Mileage ( PP )</span>
-                        <input type="text" value="    " style="width:60%; display:inline;"> <span style="font-size:9px; font-weight:bold; color:#1e3a8a;">Km</span>
+                        <input type="text" placeholder="..." style="width:60%; display:inline;"> <span style="font-size:9px; font-weight:bold; color:#1e3a8a;">Km</span>
                     </td>
                 </tr>
             </table>
 
-            <!-- BLOCK 3: MACHINE DETAILS -->
             <table class="tsr-table">
                 <tr>
                     <td colspan="6" class="section-bar">MACHINE DETAILS</td>
@@ -209,11 +206,11 @@
                 <tr>
                     <td style="width: 22%; background-color: #f8fafc;">
                         <span class="label-text">Machine Model</span>
-                        <input type="text" value="       " style="font-weight: bold;">
+                        <input type="text" placeholder="..." style="font-weight: bold;">
                     </td>
                     <td style="width: 23%;">
                         <span class="label-text">Machine Serial Number</span>
-                        <input type="text" value="      ">
+                        <input type="text" placeholder="...">
                     </td>
                     <td style="width: 15%; font-weight: bold; background-color: #f8fafc;">
                         <span class="label-text">Attachment</span>
@@ -222,59 +219,59 @@
                     </td>
                     <td style="width: 20%;">
                         <span class="label-text">Name</span>
-                        <input type="text" placeholder="              ">
+                        <input type="text" placeholder="...">
                     </td>
                     <td style="width: 20%;" colspan="2">
                         <span class="label-text">Make</span>
-                        <input type="text" placeholder="          ">
+                        <input type="text" placeholder="...">
                     </td>
                 </tr>
                 <tr>
                     <td>
                         <span class="label-text">Engine Model</span>
-                        <input type="text" placeholder="           ">
+                        <input type="text" placeholder="...">
                     </td>
                     <td>
                         <span class="label-text">Engine No.</span>
-                        <input type="text" placeholder="           ">
+                        <input type="text" placeholder="...">
                     </td>
                     <td style="background-color: #f8fafc;"></td>
                     <td>
                         <span class="label-text">Model</span>
-                        <input type="text" placeholder="            ">
+                        <input type="text" placeholder="...">
                     </td>
                     <td colspan="2">
                         <span class="label-text">Serial No.</span>
-                        <input type="text" placeholder="            ">
+                        <input type="text" placeholder="...">
                     </td>
                 </tr>
                 <tr>
                     <td>
                         <span class="label-text">SMR / HRS</span>
-                        <input type="text" value="      " style="font-weight: bold; color: #b91c1c;">
+                        <input type="text" placeholder="..." style="font-weight: bold; color: #b91c1c;">
                     </td>
                     <td>
                         <span class="label-text">SMR / KM</span>
-                        <input type="text" placeholder="              ">
+                        <input type="text" placeholder="...">
                     </td>
                     <td>
                         <span class="label-text">Delivery Date</span>
-                        <input type="text" placeholder="               ">
+                        <input type="text" placeholder="...">
                     </td>
                     <td>
                         <span class="label-text">Trouble Date</span>
-                        <input type="text" placeholder="                ">
+                        <input type="text" placeholder="...">
                     </td>
                     <td colspan="2">
                         <span class="label-text">Corrected Date</span>
-                        <input type="text" placeholder="               ">
+                        <input type="text" placeholder="...">
                     </td>
                 </tr>
                 <tr>
                     <td>
-                        <span class="label-text">* Pay Load</span>
+                        <span class="label-text">* Pay Payload</span>
                         <div style="display:flex; align-items:center; gap:3px;">
-                            <input type="text" value="     " style="width:45px;">
+                            <input type="text" placeholder="..." style="width:45px;">
                             <span class="kg-box">K</span>
                             <span class="kg-box">G</span>
                         </div>
@@ -291,12 +288,11 @@
                         <span class="label-text">* Max. Speed</span>
                         <div style="display:flex; align-items:center; gap:3px;">
                             <input type="text" style="width:100px;">
-             
                         </div>
                     </td>
                     <td colspan="2">
                         <span class="label-text">* Average Speed</span>
-                        <input type="text" placeholder="               ">
+                        <input type="text" placeholder="...">
                     </td>
                 </tr>
                 <tr>
@@ -326,12 +322,11 @@
                     </td>
                     <td colspan="2">
                         <span class="label-text">Environment</span>
-                        <input type="text" placeholder="          ">
+                        <input type="text" placeholder="...">
                     </td>
                 </tr>
             </table>
 
-            <!-- BLOCK 4: COMPLAINT & FAILURE ANALYSIS -->
             <table class="tsr-table">
                 <tr>
                     <td colspan="3" class="section-bar">COMPLAINT & FAILURE ANALYSIS</td>
@@ -339,7 +334,7 @@
                 <tr>
                     <td colspan="2" style="padding: 5px; width: 80%;">
                         <span class="label-text">Complaint <span class="sub-label-hint">(Describe detail of field complaint / field action)</span></span>
-                        <textarea rows="3" style="line-height:1.4; font-weight: 500;">               </textarea>
+                        <textarea rows="3" style="line-height:1.4; font-weight: 500;" placeholder="Tuliskan keluhan..."></textarea>
                     </td>
                     <td style="padding: 0; width: 20%;">
                         <table style="width:100%; border-collapse:collapse; border:none; height:100%;">
@@ -361,48 +356,46 @@
                 <tr>
                     <td style="width: 40%;">
                         <span class="label-text">Causing Part (Part No.)</span>
-                        <input type="text" placeholder="                           ">
+                        <input type="text" placeholder="...">
                     </td>
                     <td style="width: 40%;">
                         <span class="label-text">Description</span>
-                        <input type="text" placeholder="                            ">
+                        <input type="text" placeholder="...">
                     </td>
                     <td style="width: 20%;">
                         <span class="label-text">Component</span>
-                        <input type="text" placeholder="                            ">
+                        <input type="text" placeholder="...">
                     </td>
                 </tr>
                 <tr>
                     <td colspan="3" style="padding: 5px; background-color: #fdf2f8; border-color: #1e3a8a;">
                         <span class="label-text" style="margin-bottom: 3px; color: #be185d;">Failure</span>
                         <div class="failure-grid">
-                            <label><input type="checkbox"> Burn</label>
-                            <label><input type="checkbox"> Broken</label>
-                            <label><input type="checkbox"> Dent</label>
-                            <label><input type="checkbox"> Scratch</label>
-                            <label><input type="checkbox"> Pitting</label>
-                            <label><input type="checkbox"> Worn</label>
-                            <label><input type="checkbox"> Bend</label>
-                            <label><input type="checkbox"> Crack</label>
-                            <label><input type="checkbox"> Loose</label>
-                            <label><input type="checkbox"> Short</label>
-                            <label><input type="checkbox"> Rusty</label>
-                            <label><input type="checkbox"> Others</label>
+                            <label><input type="checkbox" name="fail_burn"> Burn</label>
+                            <label><input type="checkbox" name="fail_broken"> Broken</label>
+                            <label><input type="checkbox" name="fail_dent"> Dent</label>
+                            <label><input type="checkbox" name="fail_scratch"> Scratch</label>
+                            <label><input type="checkbox" name="fail_pitting"> Pitting</label>
+                            <label><input type="checkbox" name="fail_worn"> Worn</label>
+                            <label><input type="checkbox" name="fail_bend"> Bend</label>
+                            <label><input type="checkbox" name="fail_crack"> Crack</label>
+                            <label><input type="checkbox" name="fail_loose"> Loose</label>
+                            <label><input type="checkbox" name="fail_short"> Short</label>
+                            <label><input type="checkbox" name="fail_rusty"> Rusty</label>
+                            <label><input type="checkbox" name="fail_others"> Others</label>
                         </div>
                     </td>
                 </tr>
                 <tr>
                     <td colspan="3" style="padding: 5px;">
                         <span class="label-text">Analysis : <span class="sub-label-hint">(describe detail of failure, analyse the cause, operating condition and attached photographs)</span></span>
-                        <textarea rows="2" style="line-height:1.4;">              </textarea>
+                        <textarea rows="2" style="line-height:1.4;" placeholder="Tuliskan analisis kerusakan..."></textarea>
                     </td>
                 </tr>
             </table>
 
-            <!-- BLOCK 5: MATRIX CAUSED + REMEDY & MANHOURS -->
             <table class="tsr-table">
                 <tr>
-                    <!-- MATRIKS PENYEBAB -->
                     <td style="width: 60%; padding: 0;">
                         <table style="width: 100%; border-collapse: collapse; border: none;">
                             <tr style="font-weight: bold; background: #dbeafe; color: #1e3a8a; text-align: center;">
@@ -418,47 +411,47 @@
                             </tr>
                             <tr>
                                 <td style="border:none; border-bottom:1px solid #1e3a8a; font-size:7.5px; padding:2px; color:#334155;">MISOPERATION</td>
-                                <td style="text-align:center; border:none; border-bottom:1px solid #1e3a8a;"><input type="radio" name="m1"></td>
-                                <td style="text-align:center; border:none; border-bottom:1px solid #1e3a8a; border-right:1px solid #1e3a8a;"><input type="radio" name="m1"></td>
+                                <td style="text-align:center; border:none; border-bottom:1px solid #1e3a8a;"><input type="radio" name="m1" value="yes"></td>
+                                <td style="text-align:center; border:none; border-bottom:1px solid #1e3a8a; border-right:1px solid #1e3a8a;"><input type="radio" name="m1" value="no"></td>
                                 <td style="border:none; border-bottom:1px solid #1e3a8a; font-size:7.5px; padding:2px; color:#334155;">BAD WELD</td>
-                                <td style="text-align:center; border:none; border-bottom:1px solid #1e3a8a;"><input type="radio" name="m2"></td>
-                                <td style="text-align:center; border:none; border-bottom:1px solid #1e3a8a; border-right:1px solid #1e3a8a;"><input type="radio" name="m2"></td>
+                                <td style="text-align:center; border:none; border-bottom:1px solid #1e3a8a;"><input type="radio" name="m2" value="yes"></td>
+                                <td style="text-align:center; border:none; border-bottom:1px solid #1e3a8a; border-right:1px solid #1e3a8a;"><input type="radio" name="m2" value="no"></td>
                                 <td style="border:none; border-bottom:1px solid #1e3a8a; font-size:7.5px; padding:2px; color:#334155;">MISASSEMBLY</td>
-                                <td style="text-align:center; border:none; border-bottom:1px solid #1e3a8a;"><input type="radio" name="m3"></td>
-                                <td style="text-align:center; border:none; border-bottom:1px solid #1e3a8a;"><input type="radio" name="m3"></td>
+                                <td style="text-align:center; border:none; border-bottom:1px solid #1e3a8a;"><input type="radio" name="m3" value="yes"></td>
+                                <td style="text-align:center; border:none; border-bottom:1px solid #1e3a8a;"><input type="radio" name="m3" value="no"></td>
                             </tr>
                             <tr>
                                 <td style="border:none; border-bottom:1px solid #1e3a8a; font-size:7.5px; padding:2px; color:#334155;">MISMAINTENANCE</td>
-                                <td style="text-align:center; border:none; border-bottom:1px solid #1e3a8a;"><input type="radio" name="m4"></td>
-                                <td style="text-align:center; border:none; border-bottom:1px solid #1e3a8a; border-right:1px solid #1e3a8a;"><input type="radio" name="m4"></td>
+                                <td style="text-align:center; border:none; border-bottom:1px solid #1e3a8a;"><input type="radio" name="m4" value="yes"></td>
+                                <td style="text-align:center; border:none; border-bottom:1px solid #1e3a8a; border-right:1px solid #1e3a8a;"><input type="radio" name="m4" value="no"></td>
                                 <td style="border:none; border-bottom:1px solid #1e3a8a; font-size:7.5px; padding:2px; color:#334155;">POOR WELD</td>
-                                <td style="text-align:center; border:none; border-bottom:1px solid #1e3a8a;"><input type="radio" name="m5"></td>
-                                <td style="text-align:center; border:none; border-bottom:1px solid #1e3a8a; border-right:1px solid #1e3a8a;"><input type="radio" name="m5"></td>
+                                <td style="text-align:center; border:none; border-bottom:1px solid #1e3a8a;"><input type="radio" name="m5" value="yes"></td>
+                                <td style="text-align:center; border:none; border-bottom:1px solid #1e3a8a; border-right:1px solid #1e3a8a;"><input type="radio" name="m5" value="no"></td>
                                 <td style="border:none; border-bottom:1px solid #1e3a8a; font-size:7.5px; padding:2px; color:#334155;">FOREIGN MATERIAL</td>
-                                <td style="text-align:center; border:none; border-bottom:1px solid #1e3a8a;"><input type="radio" name="m6"></td>
-                                <td style="text-align:center; border:none; border-bottom:1px solid #1e3a8a;"><input type="radio" name="m6"></td>
+                                <td style="text-align:center; border:none; border-bottom:1px solid #1e3a8a;"><input type="radio" name="m6" value="yes"></td>
+                                <td style="text-align:center; border:none; border-bottom:1px solid #1e3a8a;"><input type="radio" name="m6" value="no"></td>
                             </tr>
                             <tr>
                                 <td style="border:none; border-bottom:1px solid #1e3a8a; font-size:7.5px; padding:2px; color:#334155;">MISADJUSTMENT</td>
-                                <td style="text-align:center; border:none; border-bottom:1px solid #1e3a8a;"><input type="radio" name="m7"></td>
-                                <td style="text-align:center; border:none; border-bottom:1px solid #1e3a8a; border-right:1px solid #1e3a8a;"><input type="radio" name="m7"></td>
+                                <td style="text-align:center; border:none; border-bottom:1px solid #1e3a8a;"><input type="radio" name="m7" value="yes"></td>
+                                <td style="text-align:center; border:none; border-bottom:1px solid #1e3a8a; border-right:1px solid #1e3a8a;"><input type="radio" name="m7" value="no"></td>
                                 <td style="border:none; border-bottom:1px solid #1e3a8a; font-size:7.5px; padding:2px; color:#334155;">BAD MATERIAL</td>
-                                <td style="text-align:center; border:none; border-bottom:1px solid #1e3a8a;"><input type="radio" name="m8"></td>
-                                <td style="text-align:center; border:none; border-bottom:1px solid #1e3a8a; border-right:1px solid #1e3a8a;"><input type="radio" name="m8"></td>
+                                <td style="text-align:center; border:none; border-bottom:1px solid #1e3a8a;"><input type="radio" name="m8" value="yes"></td>
+                                <td style="text-align:center; border:none; border-bottom:1px solid #1e3a8a; border-right:1px solid #1e3a8a;"><input type="radio" name="m8" value="no"></td>
                                 <td style="border:none; border-bottom:1px solid #1e3a8a; font-size:7.5px; padding:2px; color:#334155;">POOR DURABILITY</td>
-                                <td style="text-align:center; border:none; border-bottom:1px solid #1e3a8a;"><input type="radio" name="m9"></td>
-                                <td style="text-align:center; border:none; border-bottom:1px solid #1e3a8a;"><input type="radio" name="m9"></td>
+                                <td style="text-align:center; border:none; border-bottom:1px solid #1e3a8a;"><input type="radio" name="m9" value="yes"></td>
+                                <td style="text-align:center; border:none; border-bottom:1px solid #1e3a8a;"><input type="radio" name="m9" value="no"></td>
                             </tr>
                             <tr>
                                 <td style="border:none; border-bottom:1px solid #1e3a8a; font-size:7.5px; padding:2px; color:#334155;">POOR TORQUE</td>
-                                <td style="text-align:center; border:none; border-bottom:1px solid #1e3a8a;"><input type="radio" name="m10"></td>
-                                <td style="text-align:center; border:none; border-bottom:1px solid #1e3a8a; border-right:1px solid #1e3a8a;"><input type="radio" name="m10"></td>
+                                <td style="text-align:center; border:none; border-bottom:1px solid #1e3a8a;"><input type="radio" name="m10" value="yes"></td>
+                                <td style="text-align:center; border:none; border-bottom:1px solid #1e3a8a; border-right:1px solid #1e3a8a;"><input type="radio" name="m10" value="no"></td>
                                 <td style="border:none; border-bottom:1px solid #1e3a8a; font-size:7.5px; padding:2px; color:#334155;">DIRTY FUEL</td>
-                                <td style="text-align:center; border:none; border-bottom:1px solid #1e3a8a;"><input type="radio" name="m11"></td>
-                                <td style="text-align:center; border:none; border-bottom:1px solid #1e3a8a; border-right:1px solid #1e3a8a;"><input type="radio" name="m11"></td>
+                                <td style="text-align:center; border:none; border-bottom:1px solid #1e3a8a;"><input type="radio" name="m11" value="yes"></td>
+                                <td style="text-align:center; border:none; border-bottom:1px solid #1e3a8a; border-right:1px solid #1e3a8a;"><input type="radio" name="m11" value="no"></td>
                                 <td style="border:none; border-bottom:1px solid #1e3a8a; font-size:7.5px; padding:2px; color:#334155;">FATIQUE MATERIAL</td>
-                                <td style="text-align:center; border:none; border-bottom:1px solid #1e3a8a;"><input type="radio" name="m12"></td>
-                                <td style="text-align:center; border:none; border-bottom:1px solid #1e3a8a;"><input type="radio" name="m12"></td>
+                                <td style="text-align:center; border:none; border-bottom:1px solid #1e3a8a;"><input type="radio" name="m12" value="yes"></td>
+                                <td style="text-align:center; border:none; border-bottom:1px solid #1e3a8a;"><input type="radio" name="m12" value="no"></td>
                             </tr>
                             <tr>
                                 <td colspan="9" style="border:none; padding:4px; background-color:#f8fafc;">
@@ -468,7 +461,6 @@
                             </tr>
                         </table>
                     </td>
-                    <!-- REMEDY & MANHOURS -->
                     <td style="width: 40%; padding: 0;">
                         <table style="width: 100%; border-collapse: collapse; border: none; height: 100%;">
                             <tr>
@@ -488,7 +480,6 @@
                 </tr>
             </table>
 
-            <!-- BLOCK 6: TABEL SPAREPARTS -->
             <table class="tsr-table">
                 <thead>
                     <tr>
@@ -512,10 +503,10 @@
                         <td><input type="text"></td>
                         <td style="text-align:center; vertical-align:middle;"><input type="checkbox"></td>
                         <td style="text-align:center; vertical-align:middle;"><input type="checkbox"></td>
-                        <td><input type="text" value="     " style="font-weight: bold; color:#1e3a8a;"></td>
-                        <td style="text-align:center; vertical-align:middle;"><input type="checkbox" ></td>
+                        <td><input type="text" style="font-weight: bold; color:#1e3a8a;"></td>
                         <td style="text-align:center; vertical-align:middle;"><input type="checkbox"></td>
-                        <td><input type="text" value="        "></td>
+                        <td style="text-align:center; vertical-align:middle;"><input type="checkbox"></td>
+                        <td><input type="text"></td>
                         <td><input type="number" style="text-align:center; font-weight: bold;"></td>
                         <td><input type="text"></td>
                     </tr>
@@ -526,7 +517,7 @@
                         <td><input type="text"></td>
                         <td style="text-align:center; vertical-align:middle;"><input type="checkbox"></td>
                         <td style="text-align:center; vertical-align:middle;"><input type="checkbox"></td>
-                        <td><input type="text" value="       "></td>
+                        <td><input type="text"></td>
                         <td><input type="number" style="text-align:center; font-weight: bold;"></td>
                         <td><input type="text"></td>
                     </tr>
@@ -540,7 +531,6 @@
                 </tbody>
             </table>
 
-            <!-- BLOCK 7: STATUS FINISH BAR -->
             <table class="tsr-table">
                 <tr>
                     <td style="padding: 5px; font-weight: bold; background-color: #fffaf0; border: 1px solid #1e3a8a;">
@@ -548,15 +538,14 @@
                             <span class="label-text" style="margin:0; color: #c2410c; font-size: 8.5px;">STATUS :</span>
                             <label style="color:#475569; font-size:9px;"><input type="checkbox"> FINISH</label>
                             <label style="display:flex; align-items:center; gap:5px; color:#b91c1c; font-size:9px;">
-                                <input type="checkbox" > NOT FINISH DUE TO :
-                                <input type="text" id="repReason" value="       " style="border-bottom:1px solid #b91c1c; width:250px; font-weight: bold; color:#b91c1c;">
+                                <input type="checkbox"> NOT FINISH DUE TO :
+                                <input type="text" id="repReason" style="border-bottom:1px solid #b91c1c; width:250px; font-weight: bold; color:#b91c1c;">
                             </label>
                         </div>
                     </td>
                 </tr>
             </table>
 
-            <!-- BLOCK 8: LUBE USED TABLE -->
             <table class="tsr-table">
                 <thead>
                     <tr style="text-align: center; font-weight: bold;">
@@ -577,7 +566,6 @@
                 </tbody>
             </table>
 
-            <!-- BLOCK 9: FOOTER TANDA TANGAN -->
             <table class="tsr-table">
                 <tr>
                     <td style="width: 33%; background-color: #f8fafc;">
@@ -585,7 +573,7 @@
                         <input type="text" placeholder="..................................................">
                         <div style="margin-top: 10px;">
                             <span class="label-text">Mechanic Name & Sign :</span>
-                            <input type="text" id="repMechanic" value="         " style="font-weight: bold; color: #2563eb; font-size: 12.5px;">
+                            <input type="text" id="repMechanic" style="font-weight: bold; color: #2563eb; font-size: 12.5px;">
                             <div style="font-size: 7.5px; color: #94a3b8; font-style:italic; margin-top:2px;">(Signed Electronically)</div>
                         </div>
                     </td>
@@ -596,7 +584,7 @@
                             <span class="label-text">Attached Photo</span>
                             <div style="display: flex; gap: 15px; margin-top: 2px; font-weight: bold; color:#475569;">
                                 <label><input type="checkbox"> YES</label>
-                                <label><input type="checkbox" > NO</label>
+                                <label><input type="checkbox"> NO</label>
                             </div>
                         </div>
                         <div style="margin-top: 4px;">
@@ -622,14 +610,12 @@
         </div>
     </div>
 
-    <!-- PANEL UTAMA SIMPAN PDF -->
     <div class="panel-action">
         <button class="btn-save-pdf" onclick="openSaveModal()">
             💾 Save As Pdf
         </button>
     </div>
 
-    <!-- POP-UP KONFIRMASI -->
     <div class="modal-backdrop" id="pdfModal">
         <div class="modal-box">
             <div class="modal-title">Konfirmasi Cetak PDF</div>
@@ -646,18 +632,18 @@
     </div>
 
     <script>
-        // --- 1. RESPONSIVE LAYAR PREVIEW HP ---
+        // --- 1. RESPONSIVE LAYAR PREVIEW HP (Sintaks ES5 Tradisional) ---
         function handleFormResponsiveScaling() {
-            const paper = document.getElementById('tsr-form');
-            const wrapper = document.querySelector('.page-wrapper');
-            const currentWidth = window.innerWidth;
+            var paper = document.getElementById('tsr-form');
+            var wrapper = document.querySelector('.page-wrapper');
+            var currentWidth = window.innerWidth;
             
             if (currentWidth < 830) {
-                const scalePadding = 20; 
-                const targetScale = (currentWidth - scalePadding) / 794;
-                paper.style.transform = `scale(${targetScale})`;
+                var scalePadding = 20; 
+                var targetScale = (currentWidth - scalePadding) / 794;
+                paper.style.transform = 'scale(' + targetScale + ')';
                 paper.style.transformOrigin = 'top center';
-                wrapper.style.height = `${(paper.offsetHeight * targetScale) + 20}px`;
+                wrapper.style.height = ((paper.offsetHeight * targetScale) + 20) + 'px';
             } else {
                 paper.style.transform = 'none';
                 paper.style.transformOrigin = 'unset';
@@ -667,27 +653,51 @@
         window.addEventListener('load', handleFormResponsiveScaling);
         window.addEventListener('resize', handleFormResponsiveScaling);
 
-        // --- 2. POP-UP MODAL ---
+        // --- 2. POP-UP MODAL (Sintaks ES5 Tradisional) ---
         function openSaveModal() {
-            const repNo = document.getElementById('repNo').value || 'TSR-REPORT';
-            const cleanSuggestedName = `TSR_${repNo.replace(/\//g, '-')}`;
+            var repNo = document.getElementById('repNo').value.trim() || 'TSR-REPORT';
+            var cleanSuggestedName = 'TSR_' + repNo.replace(/\//g, '-');
             document.getElementById('pdfFileNameInput').value = cleanSuggestedName;
             document.getElementById('pdfModal').style.display = 'flex';
         }
 
-        function closeSaveModal() { document.getElementById('pdfModal').style.display = 'none'; }
+        function closeSaveModal() { 
+            document.getElementById('pdfModal').style.display = 'none'; 
+        }
 
-        // --- 3. PROSES GENERATE PDF ANTI-KOSONG ---
+        // --- 3. PROSES GENERATE PDF ANTI-KOSONG (Sintaks ES5 Tradisional) ---
         function executeSavePDF() {
-            const elementToPrint = document.getElementById('tsr-form');
-            let finalFileName = document.getElementById('pdfFileNameInput').value.trim();
+            var elementToPrint = document.getElementById('tsr-form');
+            var finalFileName = document.getElementById('pdfFileNameInput').value.trim();
             if (!finalFileName) finalFileName = 'TSR_Kobexindo_Report';
             finalFileName = finalFileName + '.pdf';
 
             closeSaveModal();
-            document.getElementById('pdfModal').style.display = 'none';
 
-            const pdfOptions = {
+            // SINKRONISASI MANUAL ELEMEN UNTUK BROWSER LAMA / HP
+            // 1. Sinkronisasi Input Teks & Nomor
+            var txtInputs = elementToPrint.querySelectorAll('input[type="text"], input[type="number"]');
+            for (var i = 0; i < txtInputs.length; i++) {
+                txtInputs[i].setAttribute('value', txtInputs[i].value);
+            }
+            
+            // 2. Sinkronisasi Textarea (Harus dimasukkan ke innerHTML/innerText)
+            var textAreas = elementToPrint.querySelectorAll('textarea');
+            for (var j = 0; j < textAreas.length; j++) {
+                textAreas[j].innerText = textAreas[j].value;
+            }
+            
+            // 3. Sinkronisasi Checkbox & Radio
+            var checkInputs = elementToPrint.querySelectorAll('input[type="checkbox"], input[type="radio"]');
+            for (var k = 0; k < checkInputs.length; k++) {
+                if (checkInputs[k].checked) {
+                    checkInputs[k].setAttribute('checked', 'checked');
+                } else {
+                    checkInputs[k].removeAttribute('checked');
+                }
+            }
+
+            var pdfOptions = {
                 margin:       [0.1, 0.1, 0.1, 0.1], 
                 filename:     finalFileName,
                 image:        { type: 'jpeg', quality: 0.98 },
@@ -700,7 +710,7 @@
                 jsPDF:        { unit: 'in', format: 'a4', orientation: 'portrait' }
             };
 
-            html2pdf().set(pdfOptions).from(elementToPrint).save().catch(err => {
+            html2pdf().set(pdfOptions).from(elementToPrint).save().catch(function(err) {
                 alert("Gagal mencetak dokumen: " + err);
             });
         }
